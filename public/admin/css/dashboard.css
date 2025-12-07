@@ -1,0 +1,165 @@
+:root {
+    --bd-green: #006a4e; /* PRIMARY COLOR (Sidebar Background) */
+    --bd-red: #f42a41;   /* ACCENT COLOR */
+    --bg-light: #f4f6f9; /* Light, clean background for main area */
+    --sidebar-width: 250px;
+    
+    /* Card Colors */
+    --employee-color: #3498db;  /* Blue */
+    --department-color: #f39c12; /* Orange */
+    --skill-color: #27ae60;      /* Green */
+}
+
+/* Base Body and Content Setup */
+body {
+    font-family: 'Hind Siliguri', sans-serif;
+    background-color: var(--bg-light);
+    overflow-x: hidden;
+}
+
+/* -------------------- Sidebar Styles (Green Theme) -------------------- */
+
+.sidebar {
+    width: var(--sidebar-width);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 1030;
+    background: var(--bd-green); /* Required Green Color */
+    color: #ecf0f1;
+    transition: all 0.3s ease;
+    overflow-y: auto;
+    padding-bottom: 60px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-header {
+    padding: 20px 15px;
+    background: rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-title {
+    padding: 10px 15px;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+}
+
+.sidebar ul li a {
+    padding: 12px 15px;
+    font-size: 1em;
+    display: block;
+    color: #f7f9fb;
+    text-decoration: none;
+    transition: background 0.3s, border-left 0.3s;
+    border-left: 3px solid transparent;
+}
+
+.sidebar ul li a:hover {
+    color: white;
+    background: #00523c; /* Slightly darker green on hover */
+}
+
+.sidebar ul li.active > a {
+    color: white;
+    background: #004533; /* Darker green for active state */
+    border-left: 3px solid var(--bd-red); /* Accent border */
+}
+
+.sidebar ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 35px !important;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.sidebar-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px 15px;
+    background: rgba(0, 0, 0, 0.15);
+    color: #bdc3c7;
+}
+
+/* -------------------- Content & Navbar -------------------- */
+
+#content {
+    width: calc(100% - var(--sidebar-width));
+    min-height: 100vh;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: all 0.3s;
+}
+
+.navbar {
+    z-index: 1040;
+    width: calc(100% - var(--sidebar-width));
+    margin-left: var(--sidebar-width);
+    transition: all 0.3s;
+    border-bottom: 1px solid #ddd;
+}
+
+.main-content {
+    padding: 20px;
+}
+
+
+/* -------------------- Dashboard Cards (Border Start Design) -------------------- */
+
+.dashboard-card {
+    border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Colored Border Start */
+.border-employee-color { border-color: var(--employee-color) !important; }
+.border-department-color { border-color: var(--department-color) !important; }
+.border-skill-color { border-color: var(--skill-color) !important; }
+
+/* Text Colors */
+.text-employee-color { color: var(--employee-color) !important; }
+.text-department-color { color: var(--department-color) !important; }
+.text-skill-color { color: var(--skill-color) !important; }
+
+/* Muted Icon Colors */
+.text-employee-icon-muted { color: rgba(52, 152, 219, 0.2) !important; }
+.text-department-icon-muted { color: rgba(243, 156, 18, 0.2) !important; }
+.text-skill-icon-muted { color: rgba(39, 174, 96, 0.2) !important; }
+
+
+/* -------------------- Responsiveness (Sidebar Toggle) -------------------- */
+
+@media (max-width: 768px) {
+    /* Sidebar hidden by default on mobile */
+    .sidebar {
+        margin-left: calc(-1 * var(--sidebar-width));
+    }
+    .sidebar.active {
+        margin-left: 0; /* Sidebar slides in */
+    }
+    #content {
+        width: 100%;
+    }
+    /* When sidebar is open, push content to the side */
+    #content.active {
+        width: calc(100% - var(--sidebar-width));
+        margin-left: var(--sidebar-width);
+    }
+    .navbar {
+        width: 100%;
+        margin-left: 0;
+    }
+    .navbar.active {
+        margin-left: var(--sidebar-width);
+    }
+}
