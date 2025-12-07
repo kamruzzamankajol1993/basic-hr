@@ -58,7 +58,7 @@ class EmployeeController extends Controller
             'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'unique:employees,email'],
             'department_id' => ['required', 'exists:departments,id'],
-            'skills' => ['nullable', 'array'],
+            'skills' => ['nullable', 'array', 'distinct'], 
             'skills.*' => ['nullable', 'exists:skills,id'],
         ]);
 
@@ -98,7 +98,7 @@ class EmployeeController extends Controller
             'last_name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', Rule::unique('employees')->ignore($employee->id)],
             'department_id' => ['required', 'exists:departments,id'],
-            'skills' => ['nullable', 'array'],
+            'skills' => ['nullable', 'array', 'distinct'], 
             'skills.*' => ['nullable', 'exists:skills,id'],
         ]);
 

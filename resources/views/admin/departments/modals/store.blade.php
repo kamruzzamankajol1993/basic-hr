@@ -19,7 +19,7 @@
                                required autofocus 
                                placeholder="e.g., Sales, Marketing, IT">
                         
-                        {{-- Display validation error if present (on redirect back) --}}
+                      
                         @error('name')
                             <div class="invalid-feedback">
                                 {{ $message }}

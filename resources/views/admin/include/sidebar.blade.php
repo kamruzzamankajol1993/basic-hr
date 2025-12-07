@@ -17,11 +17,11 @@
                 <i class="fas fa-users me-2"></i> Employees
             </a>
             <ul class="collapse list-unstyled {{ Route::is('employees.*') ? 'show' : '' }}" id="employeeSubmenu">
-                {{-- View All (Index) --}}
+                
                 <li class="{{ Route::is('employees.index') ? 'active' : '' }}">
                     <a href="{{ route('employees.index') }}">View All</a>
                 </li>
-                {{-- Add New (Create) --}}
+              
                 <li class="{{ Route::is('employees.create') ? 'active' : '' }}">
                     <a href="{{ route('employees.create') }}">Add New</a>
                 </li>

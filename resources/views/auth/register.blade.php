@@ -192,7 +192,7 @@
                 const email = $(this).val();
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
 
-                // 1. Clear previous feedback/validation state
+                //lear previous feedback/validation state
                 emailAjaxError.addClass('d-none');
                 emailAjaxSuccess.addClass('d-none');
                 emailInput.removeClass('is-valid is-invalid');
@@ -207,13 +207,13 @@
                 // Show checking spinner
                 feedbackIconContainer.html('<i class="fas fa-spinner fa-spin text-secondary px-2"></i>');
 
-                // 2. Perform AJAX check
+                
                 $.ajax({
                     url: '{{ route('register.check.email') }}',
                     method: 'POST',
                     data: { 
                         email: email, 
-                        _token: $('meta[name="csrf-token"]').attr('content') // Use meta tag if available, fallback to hardcoded
+                        _token: $('meta[name="csrf-token"]').attr('content') 
                     },
                     success: function(response) {
                         updateFormState(response.is_unique);
@@ -227,7 +227,7 @@
                 });
             }, 500)); // 500ms debounce
             
-            // Trigger check on load if old input exists (e.g., if other fields failed validation)
+            // Trigger check on load if old input exists
             if (emailInput.val().length > 0 && emailServerErr.length > 0 && !emailServerErr.is(':visible')) {
                 emailInput.trigger('keyup'); 
             }

@@ -22,7 +22,7 @@
                                required 
                                placeholder="Enter new name">
                         
-                        {{-- Note: Validation errors here must be specifically targeted if different from the store form --}}
+                    
                         @error('name')
                             <div class="invalid-feedback">
                                 {{ $message }}

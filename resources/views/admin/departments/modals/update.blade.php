@@ -8,9 +8,9 @@
             
             <form id="updateDepartmentForm" method="POST">
                 @csrf
-                @method('PUT') {{-- Required for resource update route --}}
+                @method('PUT') 
                 
-                {{-- Hidden field to store department ID (though not strictly needed if ID is in the URL) --}}
+              
                 <input type="hidden" name="department_id" id="update_department_id"> 
                 
                 <div class="modal-body">
@@ -23,7 +23,7 @@
                                required 
                                placeholder="Enter new name">
                         
-                        {{-- Display validation error if present (on redirect back) --}}
+                       
                         @error('name')
                             <div class="invalid-feedback">
                                 {{ $message }}
